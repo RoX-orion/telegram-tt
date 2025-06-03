@@ -198,7 +198,7 @@ export class ObfuscatedConnection extends Connection {
 
     async _initConn() {
         this._obfuscation = new this.ObfuscatedIO(this);
-        this.socket.write(this._obfuscation.header);
+        // this.socket.write(this._obfuscation.header);
     }
 
     _send(data: Buffer) {

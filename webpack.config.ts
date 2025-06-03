@@ -38,19 +38,19 @@ const {
   APP_TITLE = DEFAULT_APP_TITLE,
 } = process.env;
 
-const CSP = `
-  default-src 'self';
-  connect-src 'self' wss://*.web.telegram.org blob: http: https: ${APP_ENV === 'development' ? 'wss:' : ''};
-  script-src 'self' 'wasm-unsafe-eval' https://t.me/_websync_ https://telegram.me/_websync_;
-  style-src 'self' 'unsafe-inline';
-  img-src 'self' data: blob: https://ss3.4sqi.net/img/categories_v2/
-  ${IS_PACKAGED_ELECTRON ? `${BASE_URL}/` : ''};
-  media-src 'self' blob: data: ${IS_PACKAGED_ELECTRON ? [`${BASE_URL}/`, ELECTRON_HOST_URL].join(' ') : ''};
-  object-src 'none';
-  frame-src http: https:;
-  base-uri 'none';
-  form-action 'none';`
-  .replace(/\s+/g, ' ').trim();
+// const CSP = `
+//   default-src 'self';
+//   connect-src 'self' wss://*.web.telegram.org blob: http: https: ${APP_ENV === 'development' ? 'wss:' : ''};
+//   script-src 'self' 'wasm-unsafe-eval' https://t.me/_websync_ https://telegram.me/_websync_;
+//   style-src 'self' 'unsafe-inline';
+//   img-src 'self' data: blob: https://ss3.4sqi.net/img/categories_v2/
+//   ${IS_PACKAGED_ELECTRON ? `${BASE_URL}/` : ''};
+//   media-src 'self' blob: data: ${IS_PACKAGED_ELECTRON ? [`${BASE_URL}/`, ELECTRON_HOST_URL].join(' ') : ''};
+//   object-src 'none';
+//   frame-src http: https:;
+//   base-uri 'none';
+//   form-action 'none';`
+//   .replace(/\s+/g, ' ').trim();
 
 export default function createConfig(
   _: any,
@@ -62,7 +62,7 @@ export default function createConfig(
     target: 'web',
 
     devServer: {
-      port: 1234,
+      port: 12346,
       host: '0.0.0.0',
       allowedHosts: 'all',
       hot: false,
@@ -93,7 +93,7 @@ export default function createConfig(
         stats: 'minimal',
       },
       headers: {
-        'Content-Security-Policy': CSP,
+        // 'Content-Security-Policy': CSP,
       },
     },
 
@@ -190,7 +190,7 @@ export default function createConfig(
         mainIcon: APP_ENV === 'production' ? 'icon-192x192' : 'icon-dev-192x192',
         manifest: APP_ENV === 'production' ? 'site.webmanifest' : 'site_dev.webmanifest',
         baseUrl: BASE_URL,
-        csp: CSP,
+        // csp: CSP,
         template: 'src/index.html',
       }),
       new MiniCssExtractPlugin({

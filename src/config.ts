@@ -32,7 +32,7 @@ export const BETA_CHANGELOG_URL = 'https://telegra.ph/WebA-Beta-03-20';
 export const ELECTRON_HOST_URL = process.env.ELECTRON_HOST_URL!;
 
 export const DEBUG_ALERT_MSG = 'Shoot!\nSomething went wrong, please see the error details in Dev Tools Console.';
-export const DEBUG_GRAMJS = false;
+export const DEBUG_GRAMJS = true;
 
 export const PAGE_TITLE = process.env.APP_TITLE!;
 export const INACTIVE_MARKER = '[Inactive]';

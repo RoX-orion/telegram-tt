@@ -203,7 +203,7 @@ class TelegramClient {
         apiHash?: string,
         opts: Partial<TelegramClientParams> = TelegramClient.DEFAULT_OPTIONS,
     ) {
-        if (!apiId || !apiHash || !Number.isFinite(apiId)) {
+        if (!Number.isFinite(apiId)) {
             throw Error('Your API ID or Hash are invalid. Please read "Requirements" on README.md');
         }
         const args = { ...TelegramClient.DEFAULT_OPTIONS, ...opts } as TelegramClientParams;
@@ -300,7 +300,7 @@ class TelegramClient {
                 isMainSender: true,
             });
         }
-
+        console.log('session', this.session);
         const connection = new this._connection({
             ip: this.session.serverAddress,
             port: this.session.port,
@@ -350,7 +350,7 @@ class TelegramClient {
             const DC = getDC(this.defaultDcId);
             // TODO Fill IP addresses for when `this._useIPV6` is used
             this.session.setDC(
-                this.defaultDcId, DC.ipAddress, this._args.useWSS ? 443 : 80, this._args.isTestServerRequested,
+                this.defaultDcId, DC.ipAddress, this._args.useWSS ? 443 : 7777, this._args.isTestServerRequested,
             );
         }
     }

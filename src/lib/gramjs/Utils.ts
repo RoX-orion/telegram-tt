@@ -186,6 +186,7 @@ export function getDisplayName(entity: Entity) {
  */
 export function getDC(dcId: number, downloadDC = false) {
     // TODO Move to external config
+    console.log('dcId', dcId);
     switch (dcId) {
         case 1:
             return {
@@ -196,8 +197,9 @@ export function getDC(dcId: number, downloadDC = false) {
         case 2:
             return {
                 id: 2,
-                ipAddress: `zws2${downloadDC ? '-1' : ''}.web.telegram.org`,
-                port: 443,
+                ipAddress: '127.0.0.1',
+                // ipAddress: `zws2${downloadDC ? '-1' : ''}.web.telegram.org`,
+                port: 7777,
             };
         case 3:
             return {
